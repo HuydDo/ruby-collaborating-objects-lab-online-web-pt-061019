@@ -28,9 +28,9 @@ class Song
     # song.artist.add_song(self)
     # song
 
-    artist_name, title = filename.split(" - ")
+    artist, title = filename.split(" - ")
     self.new(title).tap {|song|
-      song.artist = Artist.find_or_create_by_name(aritst_name)
+      song.artist = Artist.find_or_create_by_name(aritst)
       song.artist.add_song(song)
     }
   end
