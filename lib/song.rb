@@ -22,11 +22,12 @@ class Song
     end
     @@all << song
 
-    # if (self.artist.nil?)
-    #   self.artist = Artist.new(artistname)
-    # else
-    #   self.artist.name = artistname
-    # end
+    song_name = filename.split(" - ")[1]
+    song = Song.new(song_name)
+    artist_object = Artist.find_or_create_by_name(filename.split(" - ")[0])
+    song.artist = artist_object
+    song.artist.add_song(self)
+    
 
 
     song
